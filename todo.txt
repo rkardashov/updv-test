@@ -21,3 +21,10 @@
 
 Сервис необходимо опубликовать на Render или аналогичный сервис, исходный код разместить
 на Github. В репозиторий добавить коллекцию для Postman со всеми методами. 
+
+
+Build command 
+    suggested
+        pip install -r requirements.txt
+
+    

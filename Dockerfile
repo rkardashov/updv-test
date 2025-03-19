@@ -59,11 +59,11 @@ COPY --from=python-build-stage /usr/src/app/wheels  /wheels/
 RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
   && rm -rf /wheels/
 
-COPY ./compose/entrypoint.sh /entrypoint
+COPY ./entrypoint.sh /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
 RUN chmod +x /entrypoint
 
-COPY ./compose/start.sh /start
+COPY ./start.sh /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 

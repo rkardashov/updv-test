@@ -2,7 +2,7 @@ services:
   updevision-test: &updevision-test
     build:
       context: .
-      dockerfile: compose/Dockerfile
+      dockerfile: Dockerfile
     image: updevision-test
     container_name: updevision-test
     hostname: updevision-test-local
