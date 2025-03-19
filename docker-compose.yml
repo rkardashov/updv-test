@@ -1,0 +1,40 @@
+services:
+  updevision-test: &updevision-test
+    build:
+      context: .
+      dockerfile: compose/Dockerfile
+    image: updevision-test
+    container_name: updevision-test
+    hostname: updevision-test-local
+    depends_on:
+      - updevision-test-postgres
+    volumes:
+      - .:/app:z
+    env_file:
+      - .env
+    command: /start
+    ports:
+      - 80:8000
+    networks:
+      - updevision_network
+
+  updevision-test-postgres:
+    image: postgres:15-bullseye
+    container_name: updevision-test-postgres
+    volumes:
+      - updevision_postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports: !override []
+    networks:
+      - updevision_network
+
+volumes:
+  updevision_postgres_data:
+
+networks:
+  updevision_network:
+    external: true
+    name: updevision_network
