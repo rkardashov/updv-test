@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "12efe503-9834-4387-8b5b-a2b7d5dbad4e",
+		"name": "Updevision test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5783759"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code == 201) {",
+							"    pm.collectionVariables.set(\"token\", pm.response.json().token)",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ID\": \"what@ev.er\",\n    \"password\": \"lfgdj7823rmhjr\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://updevision-test.onrender.com/api/signup/",
+					"protocol": "https",
+					"host": [
+						"updevision-test",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"signup",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code == 200) {",
+							"    pm.collectionVariables.set(\"token\", pm.response.json().token)",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ID\": \"+71111111113\",\n    \"password\": \"7passdflkasjdsfd123fajsf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://updevision-test.onrender.com/api/signin/",
+					"protocol": "https",
+					"host": [
+						"updevision-test",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"signin",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://updevision-test.onrender.com/api/info/",
+					"protocol": "https",
+					"host": [
+						"updevision-test",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"info",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "latency",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://updevision-test.onrender.com/api/latency/",
+					"protocol": "https",
+					"host": [
+						"updevision-test",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"latency",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"all\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://updevision-test.onrender.com/api/logout/",
+					"protocol": "https",
+					"host": [
+						"updevision-test",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "98bab0051f2940e3a85c024df81f2da3b13c51fd",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
